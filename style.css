@@ -1,0 +1,838 @@
+/* Ativa a rolagem suave ao clicar nos links do menu */
+html {
+  scroll-behavior: smooth;
+}
+
+/* CORPO DA PÁGINA (FUNDO GERAL) */
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  
+  /* Defina aqui a cor desejada (exemplo: um azul bem escuro) */
+  background-color: #315e8ebd !important; 
+  
+  color: #315e8ebd; /* Deixa o texto geral claro para aparecer no fundo escuro */
+  scroll-behavior: smooth;
+}
+
+/* MENU ÂNCORA FIXO E FLUTUANTE SOBRE O VÍDEO */
+.menu-ancora {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(15, 32, 67, 0.65); /* Azul transparente */
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 16px 0;
+}
+
+.menu-ancora ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.menu-ancora a {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.menu-ancora a:hover {
+  color: #82a1d6;
+}
+
+/* BANNER COM ESPAÇAMENTO PARA NÃO FICAR ESCONDIDO ATRÁS DO MENU */
+/* BANNER QUE MOSTRA O VÍDEO COMPLETO SEM CORTES */
+/* BANNER ASSUMINDO A PROPORÇÃO ORIGINAL DO VÍDEO */
+.banner-versiculo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  margin-top: 0; /* Garante que não haja espaço sobrando acima */
+}
+
+/* VÍDEO NO TAMANHO E PROPORÇÃO ORIGINAL */
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Mudamos para 'cover' ou 'contain' dependendo de como quer que ele encaixe na proporção nativa */
+  object-fit: cover; 
+}
+
+/* CAMADA SOBREPOSTA COM O TEXTO */
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Escurece levemente para destacar o versículo */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+/* ESPAÇAMENTO DAS SEÇÕES SEGUINTES */
+section {
+  position: relative;
+  z-index: 10;
+  padding: 100px 20px; /* Garante que as seções comecem logo após o vídeo inteiro */
+  min-height: 400px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+}
+  /* IMPORTANTE: Se o texto do banner estiver ficando escondido atrás do menu, 
+     descomente a linha abaixo para dar uma folga no topo: */
+  /* padding-top: 70px; */
+
+
+/* BANNER PRINCIPAL */
+.banner-versiculo {
+  /* Caso queira usar uma imagem de fundo, descomente a linha abaixo e insira a URL da imagem */
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('sua-imagem.jpg'); */
+  
+  background-color: #1a252f; /* Fundo escuro e elegante */
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 100px 20px;
+  border-bottom: 3px solid #f1c40f; /* Detalhe em dourado */
+}
+
+.banner-conteudo h1 {
+  font-family: 'Georgia', serif; /* Fonte clássica e elegante */
+  font-size: 2.5rem;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto 15px auto;
+  line-height: 1.4;
+}
+
+.banner-conteudo .referencia {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #f1c40f; /* Cor dourada para destacar a referência */
+  letter-spacing: 1px;
+}
+
+/* Responsividade para telas menores (celulares) */
+@media (max-width: 768px) {
+  .banner-versiculo {
+    padding: 60px 15px;
+  }
+  .banner-conteudo h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* CONTAINER DO BANNER */
+.banner-versiculo {
+  position: relative;
+  width: 100%;
+  height: 450px; /* Altura do banner (ajuste conforme preferir) */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid #f1c40f; /* Detalhe dourado */
+}
+
+/* VÍDEO DE FUNDO */
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  object-fit: cover; /* Garante que o vídeo preencha todo o espaço sem esticar */
+}
+
+/* CAMADA ESCURA SOBRE O VÍDEO (para dar contraste ao texto) */
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); /* Escurece o vídeo em 55% */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* TEXTO DO BANNER */
+.banner-conteudo {
+  text-align: center;
+  color: #ffffff;
+}
+
+.banner-conteudo h1 {
+  font-family: 'Georgia', serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto 15px auto;
+  line-height: 1.4;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Sombra para melhorar a leitura */
+}
+
+.banner-conteudo .referencia {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #f1c40f;
+  letter-spacing: 1px;
+}
+
+/* RESPONSIVIDADE PARA CELULARES */
+@media (max-width: 768px) {
+  .banner-versiculo {
+    height: 350px;
+  }
+  .banner-conteudo h1 {
+    font-size: 1.6rem;
+  }
+}
+
+.banner-versiculo {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  background-color: #000; /* Ajuda a ver a área do banner */
+}
+
+/* CONTAINER DO BANNER */
+.banner-versiculo {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Aumentamos um pouco a altura para dar mais espaço ao vídeo */
+  background-color: #0b0f19; /* Fundo escuro nas laterais se sobrar espaço */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid #f1c40f;
+}
+
+/* VÍDEO DE FUNDO MOSTRANDO ELE INTEIRO */
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  
+  /* MUDANÇA PRINCIPAL AQUI: */
+  object-fit: contain; /* Garante que o vídeo apareça inteiro, sem cortes */
+}
+
+/* CAMADA ESCURA E TEXTO */
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Deixamos um pouco mais leve para ver melhor a Terra */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* CONTAINER DO BANNER */
+.banner-versiculo {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* Ocupa 80% da altura da tela do computador/celular, adaptando-se perfeitamente */
+  min-height: 450px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid #173b61;
+}
+
+/* VÍDEO DE FUNDO ESTICADO DE PONTA A PONTA */
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  object-fit: cover; /* Cobre toda a área de ponta a ponta, sem faixas pretas */
+}
+
+/* CAMADA ESCURA E TEXTO */
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* Escurece levemente para destacar o texto */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.banner-conteudo {
+  text-align: center;
+  color: #ffffff;
+  z-index: 3;
+}
+
+.banner-conteudo h1 {
+  font-family: 'Georgia', serif;
+  font-size: 2.8rem;
+  font-style: italic;
+  max-width: 900px;
+  margin: 0 auto 15px auto;
+  line-height: 1.4;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.banner-conteudo .referencia {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #13285c;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* RESPONSIVIDADE PARA CELULARES */
+@media (max-width: 768px) {
+  .banner-versiculo {
+    height: 60vh;
+  }
+  .banner-conteudo h1 {
+    font-size: 1.8rem;
+  }
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Sombra escura transparente */
+  z-index: 2; /* Fica por cima do vídeo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*FONTE*/
+/* IMPORTAÇÃO DA FONTE MODERNA SEM SERIFE (MONTSERRAT) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+/* TEXTO DO BANNER (VERSÍCULO) */
+.banner-conteudo h1 {
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  font-weight: 300; /* Deixa o versículo fino */
+  font-size: 2.8rem;
+  font-style: normal;
+  max-width: 900px;
+  margin: 0 auto 15px auto;
+  line-height: 1.4;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  color: #ffffff;
+}
+
+/* REFERÊNCIA / CAPÍTULO (GÊNESIS 1:1) */
+/* TEXTO DO BANNER (VERSÍCULO MAIOR E FINO) */
+.banner-conteudo h1 {
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  font-weight: 300; /* Mantém a espessura fina */
+  font-size: 3.8rem; /* Aumentei o tamanho aqui (experimente 3.5rem a 4rem) */
+  font-style: normal;
+  max-width: 1000px; /* Aumentamos um pouco a largura máxima para acompanhar */
+  margin: 0 auto 15px auto;
+  line-height: 1.3;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+  color: #ffffff;
+}
+
+/* IMPORTAÇÃO DE UMA FONTE BASTÃO ELEGANTE E MODERNA (OUTFIT) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap');
+
+/* TEXTO DO BANNER (VERSÍCULO EM LETRA BASTÃO FINA E ELEGANTE) */
+.banner-conteudo h1 {
+  font-family: 'Outfit', 'Segoe UI', sans-serif; /* Fonte bastão moderna e limpa */
+  font-weight: 300; /* Mantém bem fino */
+  font-size: 3.8rem;
+  font-style: normal;
+  max-width: 1000px;
+  margin: 0 auto 15px auto;
+  line-height: 1.3;
+  letter-spacing: 1px; /* Um leve espaçamento para dar elegância */
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+  color: #ffffff;
+}
+
+/* TEXTO DO BANNER (VERSÍCULO) */
+.banner-conteudo h1 {
+  font-family: 'Outfit', 'Segoe UI', sans-serif;
+  font-weight: 300; /* Fino */
+  font-size: 3.8rem;
+  font-style: normal;
+  max-width: 1000px;
+  margin: 0 auto 15px auto;
+  line-height: 1.3;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+  color: #ffffff;
+}
+
+/* TEXTO DO BANNER (VERSÍCULO COM CINZEL DECORATIVE) */
+.banner-conteudo h1 {
+  font-family: 'Cinzel Decorative', serif; /* Fonte clássica e imponente */
+  font-weight: 400; /* Peso equilibrado para manter a legibilidade */
+  font-size: 3.2rem; /* Como fontes decorativas costumam ser grandes, ajustamos para um tamanho ideal */
+  font-style: normal;
+  max-width: 1000px;
+  margin: 0 auto 15px auto;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+  color: #ffffff;
+}
+
+/* TEXTO DO BANNER (VERSÍCULO COM MARCELLUS) */
+.banner-conteudo h1 {
+  font-family: 'Marcellus', serif; /* Fonte clássica, limpa e com traços finos */
+  font-weight: 400; /* Na Marcellus, o peso padrão já é leve e refinado */
+  font-size: 3.2rem;
+  font-style: normal;
+  max-width: 1000px;
+  margin: 0 auto 15px auto;
+  line-height: 1.4;
+  letter-spacing: 2px; /* Espaçamento leve para dar um ar de alta sofisticação */
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+  color: #ffffff;
+}
+
+/* IMPORTAÇÃO DA FONTE INTER (MODERNIDADE E EQUILÍBRIO SEM SERIFE) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+/* TEXTO DO BANNER (VERSÍCULO) */
+.banner-conteudo h1 {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-weight: 400; /* Peso Regular: encorpado o suficiente para ler bem, mas sem ser grosso */
+  font-size: 3.2rem;
+  font-style: normal;
+  max-width: 1000px;
+  margin: 0 auto 15px auto;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+  color: #ffffff;
+}
+
+/* REFERÊNCIA / CAPÍTULO */
+.banner-conteudo .referencia {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-weight: 500; /* Um pouquinho mais marcado (Medium) para destacar a referência com elegância */
+  font-size: 1.8rem;
+  color: #6aaff9; /* Dourado */
+  letter-spacing: 2px; 
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+  display: block;
+  margin-top: 15px;
+}
+
+/* RESPONSIVIDADE PARA CELULARES */
+@media (max-width: 768px) {
+  .banner-conteudo h1 {
+    font-size: 2rem;
+  }
+  .banner-conteudo .referencia {
+    font-size: 1.3rem;
+  }
+}
+
+/* ESTILOS DA SEÇÃO DE HISTÓRIA */
+.secao-historia {
+  background-color: #fcfcfd;
+  padding: 120px 20px;
+  color: #1a252f;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.historia-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.secao-historia h2 {
+  font-family: 'Marcellus', 'Georgia', serif;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #0b0f19;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.subtitulo-historia {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #555;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
+}
+
+/* O DESENHO DA LINHA DO TEMPO VERTICAL */
+.linha-do-tempo {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 30px;
+}
+
+/* A linha vertical central desenhada */
+.linha-do-tempo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 6px; /* Posiciona a linha exatamente alinhada aos pontos */
+  height: 100%;
+  width: 3px;
+  background-color: #f1c40f; /* Cor dourada combinando com o site */
+  border-radius: 2px;
+}
+
+/* CADA ITEM DA LINHA DO TEMPO */
+.timeline-item {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* O ponto desenhado na linha */
+.timeline-ponto {
+  position: absolute;
+  left: -33px; /* Posiciona o ponto em cima da linha vertical */
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #0b0f19; /* Fundo escuro */
+  border: 3px solid #f1c40f; /* Borda dourada */
+  box-shadow: 0 0 0 4px rgba(241, 196, 15, 0.2); /* Brilho sutil */
+}
+
+/* O CARTÃO DE CONTEÚDO DE CADA ÉPOCA */
+.timeline-conteudo {
+  background-color: #ffffff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-conteudo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-data {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #c29b38; /* Tom dourado escuro */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.timeline-conteudo h3 {
+  font-family: 'Marcellus', 'Georgia', serif;
+  font-size: 1.4rem;
+  color: #0b0f19;
+  margin: 0 0 10px 0;
+}
+
+.timeline-conteudo p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+  margin: 0;
+}
+
+/* ===================================================
+   ESTILOS DA LINHA DO TEMPO DA HISTÓRIA DA IGREJA
+   =================================================== */
+
+.secao-historia {
+  padding: 100px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.historia-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.secao-historia h2 {
+  font-family: 'Marcellus', 'Georgia', serif;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #ffffff; /* Ajuste para #0b0f19 se o seu fundo for claro */
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.subtitulo-historia {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #cccccc; /* Ajuste para #555555 se o seu fundo for claro */
+  margin-bottom: 60px;
+  font-size: 1.1rem;
+}
+
+/* O DESENHO DA LINHA DO TEMPO VERTICAL */
+.linha-do-tempo {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 30px;
+}
+
+/* A linha vertical dourada desenhada */
+.linha-do-tempo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 6px; /* Alinha a linha perfeitamente aos pontos */
+  height: 100%;
+  width: 3px;
+  background-color: #f1c40f; /* Dourado */
+  border-radius: 2px;
+}
+
+/* CADA ITEM DA LINHA DO TEMPO */
+.timeline-item {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* O ponto desenhado na linha */
+.timeline-ponto {
+  position: absolute;
+  left: -33px; /* Posiciona o ponto em cima da linha vertical */
+  top: 20px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #0b0f19;
+  border: 3px solid #f1c40f;
+  box-shadow: 0 0 0 4px rgba(241, 196, 15, 0.2);
+  z-index: 2;
+}
+
+/* LINK DO CARD CLICÁVEL */
+.timeline-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* O CARTÃO DE CONTEÚDO DE CADA ÉPOCA */
+.timeline-conteudo {
+  background-color: #ffffff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* EFEITO AO PASSAR O MOUSE NO CARD */
+.timeline-card-link:hover .timeline-conteudo {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #f1c40f; /* Borda fica dourada ao passar o mouse */
+}
+
+.timeline-data {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #c29b38;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.timeline-conteudo h3 {
+  font-family: 'Marcellus', 'Georgia', serif;
+  font-size: 1.4rem;
+  color: #0b0f19;
+  margin: 0 0 10px 0;
+}
+
+.timeline-conteudo p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+  margin: 0;
+}
+
+/* TEXTO "LER ARTIGO COMPLETO" */
+.leia-mais {
+  display: inline-block;
+  margin-top: 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #c29b38;
+  transition: color 0.2s ease;
+}
+
+.timeline-card-link:hover .leia-mais {
+  color: #0b0f19;
+  text-decoration: underline;
+}
+
+
+/* CARD COM IMAGEM DE FUNDO (EXCLUSIVO DO PRIMEIRO CARD) */
+.timeline-conteudo.card-com-imagem {
+  position: relative;
+  overflow: hidden;
+  
+  /* Imagem de fundo com filtro escuro por cima para o texto destacar */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1548625149-fc4a29cf7092?q=80&w=1000&auto=format&fit=crop');
+  
+  background-size: cover;
+  background-position: center;
+  border-color: #f1c40f; /* Borda dourada em destaque */
+}
+
+/* CORES DOS TEXTOS E LISTAS SOBRE A IMAGEM */
+.timeline-conteudo.card-com-imagem h3 {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.timeline-conteudo.card-com-imagem p,
+.timeline-conteudo.card-com-imagem ul {
+  color: #f1f5f9 !important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.timeline-conteudo.card-com-imagem ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.timeline-conteudo.card-com-imagem li {
+  margin-bottom: 5px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+}
+
+.timeline-conteudo.card-com-imagem .timeline-data {
+  color: #8b0000 !important; /* Dourado */
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.timeline-conteudo.card-com-imagem .leia-mais {
+  color: #950000 !important;
+  font-weight: 500;
+}
+
+.timeline-card-link:hover .timeline-conteudo.card-com-imagem .leia-mais {
+  color: #860101 !important;
+  text-decoration: underline;
+}
+
+/* GARANTE O ESPAÇAMENTO IGUAL EM TODOS OS CARDS */
+.timeline-item {
+  position: relative;
+  margin-bottom: 45px !important; /* Força 45px de distância entre TODOS os itens */
+}
+
+/* GARANTE A MESMA DISTÂNCIA ENTRE TODOS OS CARDS */
+.timeline-item {
+  position: relative;
+  margin-bottom: 45px !important; /* Ajuste este valor se a sua distância padrão for diferente (ex: 40px ou 50px) */
+}
+
+/* O ÚLTIMO CARD DA LINHA NÃO PRECISA DE MARGEM NO FINAL */
+.timeline-item:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* MARGEM SUPERIOR DO TÍTULO H3 PARA NÃO GERAR ESPAÇO EXTRA NO TOPO DO CARD */
+.timeline-conteudo h3 {
+  margin-top: 0;
+  font-family: 'Marcellus', 'Georgia', serif;
+  font-size: 1.4rem;
+  color: #0b0f19;
+  margin-bottom: 10px;
+}
+
+.marco-subtitulo {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #555555;
+  margin-bottom: 15px;
+}
