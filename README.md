@@ -1,1 +1,1 @@
-#https://github.com/soph-astronauta/site_teologia/edit/main/README.md
+#(https://soph-astronauta.github.io/site_teologia/)
