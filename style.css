@@ -540,7 +540,7 @@ section {
   left: 6px; /* Posiciona a linha exatamente alinhada aos pontos */
   height: 100%;
   width: 3px;
-  background-color: #f1c40f; /* Cor dourada combinando com o site */
+  background-color: #615f59; /* Cor dourada combinando com o site */
   border-radius: 2px;
 }
 
@@ -563,13 +563,13 @@ section {
   height: 15px;
   border-radius: 50%;
   background-color: #0b0f19; /* Fundo escuro */
-  border: 3px solid #f1c40f; /* Borda dourada */
+  border: 3px solid #990000; /* Borda dourada */
   box-shadow: 0 0 0 4px rgba(241, 196, 15, 0.2); /* Brilho sutil */
 }
 
 /* O CARTÃO DE CONTEÚDO DE CADA ÉPOCA */
 .timeline-conteudo {
-  background-color: #ffffff;
+  background-color: #07598f;
   padding: 25px 30px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -656,7 +656,7 @@ section {
   left: 6px; /* Alinha a linha perfeitamente aos pontos */
   height: 100%;
   width: 3px;
-  background-color: #f1c40f; /* Dourado */
+  background-color: #b80000; /* Dourado */
   border-radius: 2px;
 }
 
@@ -678,8 +678,8 @@ section {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: #0b0f19;
-  border: 3px solid #f1c40f;
+  background-color: #000000;
+  border: 3px solid #073161;
   box-shadow: 0 0 0 4px rgba(241, 196, 15, 0.2);
   z-index: 2;
 }

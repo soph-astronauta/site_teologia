@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Site de Teologia</title>
   <link rel="stylesheet" href="style.css">
+  <a href="concilios.html" class="concilio-card-link"></a>
 </head>
 <body>
 
@@ -12,15 +13,30 @@
   <body>
 
   <!-- MENU ÂNCORA (Fixo no topo) -->
-  <nav class="menu-ancora">
-    <ul>
-      <li><a href="#introducao">Introdução</a></li>
-      <li><a href="#teologia-sistematica">Teologia Sistemática</a></li>
-      <li><a href="#historia-da-igreja">História da Igreja</a></li>
-      <li><a href="#estudos-biblicos">Estudos Bíblicos</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-  </nav>
+  <!-- MENU ÂNCORA FIXO NO TOPO -->
+<nav class="menu-ancora">
+  <ul>
+      <li>
+          <a href="#introducao">Introdução</a>
+      </li>
+
+      <li>
+          <a href="#historia-da-igreja">História da Igreja</a>
+      </li>
+
+      <li>
+          <a href="#concilios">Concílios</a>
+      </li>
+
+      <li>
+          <a href="#estudos-biblicos">Estudos Bíblicos</a>
+      </li>
+
+      <li>
+          <a href="#contato">Contato</a>
+      </li>
+  </ul>
+</nav>
 
   <!-- BANNER (Começa logo abaixo, com o vídeo rodando e o menu flutuando por cima) -->
   <header class="banner-versiculo">
@@ -48,18 +64,10 @@
       <p>Bem-vindo ao nosso portal dedicado ao estudo da Teologia e das Escrituras...</p>
     </section>
 
-    <section id="teologia-sistematica">
-      <h2>Teologia Sistemática</h2>
-      <p>Exploração das principais doutrinas: Bibliologia, Teontologia, Cristologia...</p>
-    </section>
+    <section id="historia-da-igreja">
+      <h2>História da igreja</h2>
 
-    <!-- SEÇÃO DE HISTÓRIA DA IGREJA -->
-<section id="historia-da-igreja" class="secao-historia">
-  <div class="historia-container">
-    <h2>História da Igreja</h2>
-    <p class="subtitulo-historia">Uma jornada através dos séculos: das origens apostólicas aos dias atuais.</p>
-
-    <!-- LINHA DO TEMPO -->
+     <!-- LINHA DO TEMPO -->
     <!-- LINHA DO TEMPO COM CARDS CLICÁVEIS -->
 <div class="linha-do-tempo">
       
@@ -218,6 +226,151 @@
   </div>
 </section>
     </section>
+     
+    </section>
+
+    <!-- concilios -->
+<section id="concilios" class="concilios">
+  <div class="concilios">
+    <h2>Concílios</h2>
+   <!-- SEÇÃO DE CONCÍLIOS -->
+<section id="concilios" class="secao-concilios">
+
+  <div class="concilios-container">
+
+      <h2>Concílios da Igreja</h2>
+
+      <p class="subtitulo-concilios">
+          Conheça os principais concílios da história da Igreja
+          e suas contribuições para a fé cristã.
+      </p>
+
+      <!-- CARD CLICÁVEL -->
+      <a href="concilios.html" class="concilio-card-link">
+
+          <div class="concilio-card">
+
+              <span class="concilio-data">
+                  História e Teologia
+              </span>
+
+              <h3>Os Grandes Concílios da Igreja</h3>
+
+              <p>
+                  Explore os principais concílios ecumênicos,
+                  suas decisões doutrinárias, os contextos históricos
+                  e sua importância para o desenvolvimento da
+                  teologia cristã.
+              </p>
+
+              <span class="leia-mais">
+                  Explorar concílios &rarr;
+              </span>
+
+          </div>
+
+      </a>
+
+  </div>
+
+  <style>
+    /* SEÇÃO DE CONCÍLIOS */
+.secao-concilios {
+    background-color: #102744;
+    padding: 100px 20px;
+    color: #ffffff;
+}
+
+.concilios-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.concilios-container h2 {
+    font-family: 'Marcellus', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.subtitulo-concilios {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    color: #cccccc;
+    font-size: 1.05rem;
+    margin-bottom: 50px;
+}
+
+/* LINK DO CARD */
+.concilio-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* CARD */
+.concilio-card {
+    background-color: #326c929c;
+    padding: 35px;
+    border-radius: 8px;
+    border: 1px solid #000000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+/* EFEITO HOVER */
+.concilio-card-link:hover .concilio-card {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    border-color: #990000;
+}
+
+/* IDENTIFICAÇÃO */
+.concilio-data {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #990000;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+/* TÍTULO */
+.concilio-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.7rem;
+    color: #020202;
+    margin-bottom: 15px;
+}
+
+/* DESCRIÇÃO */
+.concilio-card p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #374151;
+}
+
+/* LEIA MAIS */
+.concilio-card .leia-mais {
+    display: inline-block;
+    margin-top: 15px;
+    color: #990000;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+  </style>
+
+</section>
+
+   
 
     <section id="estudos-biblicos">
       <h2>Estudos Bíblicos</h2>
