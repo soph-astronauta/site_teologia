@@ -1,69 +1,585 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site de Teologia</title>
-  <link rel="stylesheet" href="style.css">
-  <a href="concilios.html" class="concilio-card-link"></a>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Exemplo de teste com imagem externa -->
+    <img src="https://picsum.photos/300/400" alt="Imagem de teste">
+    <title>Teologia | Estudo da Fé Católica</title>
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* MENU */
+        .menu {
+            width: 100%;
+            min-height: 75px;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #080c14;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo a {
+            color: #ffffff;
+            font-family: Georgia, serif;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .menu ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .menu ul li a {
+            color: #d0d3dc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .menu ul li a:hover {
+            color: #c34b59;
+        }
+
+        /* BANNER */
+        .banner {
+            height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .banner video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+        }
+
+        .banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 8, 15, 0.65);
+        }
+
+        .banner-conteudo {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+            padding: 20px;
+        }
+
+        .banner-conteudo h1 {
+            font-family: Georgia, serif;
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .banner-conteudo p {
+            color: #d0d3dc;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .banner-botao {
+            display: inline-block;
+            padding: 13px 28px;
+            border: 1px solid #a83240;
+            color: #ffffff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .banner-botao:hover {
+            background-color: #a83240;
+        }
+
+        /* INTRODUÇÃO */
+        .secao-introducao {
+            padding: 100px 8%;
+            background-color: #0b0f19;
+            color: #ffffff;
+        }
+
+        .introducao-texto {
+            max-width: 850px;
+            margin: 0 auto 65px;
+            text-align: center;
+        }
+
+        .introducao-texto h2 {
+            font-family: Georgia, serif;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .introducao-texto p {
+            color: #b8bdc9;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* CABEÇALHO DO CARROSSEL */
+        .introducao-carrossel {
+            width: 100%;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .carrossel-cabecalho {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .subtitulo-carrossel {
+            display: block;
+            color: #a83240;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .carrossel-cabecalho h2 {
+            font-family: Georgia, serif;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        /* CONTROLES */
+        .carrossel-controles {
+            display: flex;
+            gap: 12px;
+        }
+
+        .controle-carrossel {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #a83240;
+            border-radius: 50%;
+            background: transparent;
+            color: #ffffff;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .controle-carrossel:hover {
+            background-color: #a83240;
+            transform: scale(1.08);
+        }
+
+        /* CARROSSEL */
+        .carrossel-container {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 5px 2px 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .carrossel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* CARDS */
+        .card-teologia {
+            position: relative;
+            flex: 0 0 250px;
+            height: 350px;
+            display: block;
+            overflow: hidden;
+            border-radius: 5px;
+            scroll-snap-align: start;
+            text-decoration: none;
+            background-color: #171d2a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.35s ease, border-color 0.35s ease;
+        }
+
+        .card-teologia:hover {
+            transform: translateY(-7px);
+            border-color: #a83240;
+        }
+
+        .card-teologia img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .card-teologia:hover img {
+            transform: scale(1.08);
+        }
+
+        /* SOBREPOSIÇÃO DOS CARDS */
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 22px;
+            background: linear-gradient(
+                to top,
+                rgba(5, 8, 15, 0.98) 0%,
+                rgba(5, 8, 15, 0.78) 45%,
+                rgba(5, 8, 15, 0.05) 100%
+            );
+        }
+
+        .card-categoria {
+            color: #d36b76;
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .card-overlay h3 {
+            color: #ffffff;
+            font-family: Georgia, serif;
+            font-size: 19px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .card-overlay p {
+            color: #d0d3dc;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .card-link {
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .card-teologia:hover .card-link {
+            color: #d36b76;
+        }
+
+        /* OUTRAS SEÇÕES */
+        .secao {
+            padding: 90px 8%;
+            background-color: #101623;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .secao:nth-of-type(even) {
+            background-color: #0b0f19;
+        }
+
+        .secao h2 {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .secao p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            color: #b8bdc9;
+            line-height: 1.8;
+        }
+
+        .secao a {
+            display: inline-block;
+            color: #d36b76;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .secao a:hover {
+            color: #ffffff;
+        }
+
+        /* RODAPÉ */
+        footer {
+            padding: 25px;
+            background-color: #070a11;
+            text-align: center;
+            color: #858b99;
+            font-size: 12px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .banner {
+                height: 450px;
+            }
+
+            .banner-conteudo h1 {
+                font-size: 36px;
+            }
+
+            .secao-introducao {
+                padding: 70px 5%;
+            }
+
+            .introducao-texto h2 {
+                font-size: 27px;
+            }
+
+            .carrossel-cabecalho h2 {
+                font-size: 22px;
+            }
+
+            .card-teologia {
+                flex-basis: 220px;
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carrossel-cabecalho {
+                align-items: flex-start;
+            }
+
+            .card-teologia {
+                flex-basis: 200px;
+                height: 300px;
+            }
+
+            .controle-carrossel {
+                width: 38px;
+                height: 38px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- MENU ÂNCORA -->
-  <body>
+    <!-- MENU -->
+    <nav class="menu">
+        <div class="logo">
+            <a href="index.html">TEOLOGIA</a>
+        </div>
+        <ul>
+            <li><a href="#introducao">Introdução</a></li>
+            <li><a href="#historia">História da Igreja</a></li>
+            <li><a href="#concilios">Concílios</a></li>
+            <li><a href="#estudos">Estudos Bíblicos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
 
-  <!-- MENU ÂNCORA (Fixo no topo) -->
-  <!-- MENU ÂNCORA FIXO NO TOPO -->
-<nav class="menu-ancora">
-  <ul>
-      <li>
-          <a href="#introducao">Introdução</a>
-      </li>
+    <!-- BANNER -->
+    <header class="banner">
+        <video autoplay muted loop playsinline>
+            <source src="videos/10915129-hd_3840_2160_30fps.mp4" type="video/mp4">
+        </video>
+        <div class="banner-conteudo">
+            <h1>Conhecimento e Fé</h1>
+            <p>Aprofunde-se na história, na doutrina e nos ensinamentos da Igreja Católica.</p>
+            <a href="#introducao" class="banner-botao">Explorar conteúdos</a>
+        </div>
+    </header>
 
-      <li>
-          <a href="#historia-da-igreja">História da Igreja</a>
-      </li>
+    <main>
+        <!-- INTRODUÇÃO -->
+        <section id="introducao" class="secao-introducao">
+            <div class="introducao-texto">
+                <h2>Introdução à Teologia</h2>
+                <p>A teologia é o estudo de Deus, da fé e das verdades reveladas. Explore diferentes temas da tradição cristã e aprofunde seu conhecimento sobre a doutrina e a história da Igreja.</p>
+            </div>
 
-      <li>
-          <a href="#concilios">Concílios</a>
-      </li>
+            <!-- CARROSSEL -->
+            <div class="introducao-carrossel">
+                <div class="carrossel-cabecalho">
+                    <div>
+                        <span class="subtitulo-carrossel">CONHECIMENTO TEOLÓGICO</span>
+                        <h2>Explore os estudos</h2>
+                    </div>
+                    <div class="carrossel-controles">
+                        <button id="anterior" class="controle-carrossel" aria-label="Ver conteúdos anteriores">&#10094;</button>
+                        <button id="proximo" class="controle-carrossel" aria-label="Ver próximos conteúdos">&#10095;</button>
+                    </div>
+                </div>
 
-      <li>
-          <a href="#estudos-biblicos">Estudos Bíblicos</a>
-      </li>
+                <div class="carrossel-container" id="carrossel">
+                    <!-- CARD 1 -->
+                    <a href="santissima-trindade.html" class="card-teologia">
+                        <img src="img/santissima-trindade.jpg" alt="Representação da Santíssima Trindade">
+                        <div class="card-overlay">
+                            <span class="card-categoria">TEOLOGIA DOGMÁTICA</span>
+                            <h3>Santíssima Trindade</h3>
+                            <p>Conheça o mistério de um só Deus em três Pessoas: Pai, Filho e Espírito Santo.</p>
+                            <span class="card-link">Explorar estudo →</span>
+                        </div>
+                    </a>
 
-      <li>
-          <a href="#contato">Contato</a>
-      </li>
-  </ul>
-</nav>
+                    <!-- CARD 2 -->
+                    <a href="cristologia.html" class="card-teologia">
+                        <img src="img/cristologia.jpg" alt="Representação de Jesus Cristo">
+                        <div class="card-overlay">
+                            <span class="card-categoria">ESTUDO TEOLÓGICO</span>
+                            <h3>Cristologia</h3>
+                            <p>Estude a pessoa de Jesus Cristo, sua natureza divina e humana e sua missão salvífica.</p>
+                            <span class="card-link">Explorar estudo →</span>
+                        </div>
+                    </a>
 
-  <!-- BANNER (Começa logo abaixo, com o vídeo rodando e o menu flutuando por cima) -->
-  <header class="banner-versiculo">
-    <video autoplay loop muted playsinline class="video-bg">
-      <source src="videos/10915129-hd_3840_2160_30fps.mp4" type="video/mp4">
-      Seu navegador não suporta vídeos em HTML5.
-    </video>
+                    <!-- CARD 3 -->
+                    <a href="historia-dos-santos.html" class="card-teologia">
+                        <img src="img/historia-santos.jpg" alt="Representação de santos da Igreja">
+                        <div class="card-overlay">
+                            <span class="card-categoria">HAGIOGRAFIA</span>
+                            <h3>História dos Santos</h3>
+                            <p>Conheça a vida, o testemunho e o legado espiritual dos santos da Igreja.</p>
+                            <span class="card-link">Explorar estudo →</span>
+                        </div>
+                    </a>
 
-    <div class="banner-overlay">
-      <div class="banner-conteudo">
-        <h1>"No princípio, criou Deus os céus e a terra."</h1>
-        <span class="referencia">Gênesis 1:1</span>
-      </div>
-    </div>
-  </header>
+                    <!-- CARD 4 -->
+                    <a href="devocoes-marianas.html" class="card-teologia">
+                        <img src="img/devocoes-marianas.jpg" alt="Representação da Virgem Maria">
+                        <div class="card-overlay">
+                            <span class="card-categoria">MARIOLOGIA</span>
+                            <h3>Devoções Marianas</h3>
+                            <p>Explore as devoções, títulos, aparições e expressões de veneração à Virgem Maria.</p>
+                            <span class="card-link">Explorar estudo →</span>
+                        </div>
+                    </a>
 
-  <!-- SEÇÕES SEGUINTES... -->
-</header>
-<!-- CONTEÚDO DAS SEÇÕES... -->
+                    <!-- CARD 5 -->
+                    <a href="livros-deuterocanonicos.html" class="card-teologia">
+                        <img src="img/livros-deuterocanonicos.jpg" alt="Bíblia aberta">
+                        <div class="card-overlay">
+                            <span class="card-categoria">ESTUDOS BÍBLICOS</span>
+                            <h3>Livros Deuterocanônicos</h3>
+                            <p>Conheça os livros deuterocanônicos, sua origem, conteúdo e importância na tradição católica.</p>
+                            <span class="card-link">Explorar estudo →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-  <!-- CONTEÚDO DAS SEÇÕES -->
-  <main>
-    <section id="introducao">
-      <h2>Introdução à Teologia</h2>
-      <p>Bem-vindo ao nosso portal dedicado ao estudo da Teologia e das Escrituras...</p>
-    </section>
+        <!-- OUTRAS SEÇÕES -->
+        <section id="historia" class="secao">
+            <h2>História da Igreja</h2>
+            <p>Conheça os principais acontecimentos, períodos e transformações da Igreja ao longo dos séculos.</p>
+            <a href="historia/igreja-apostolica.html">Explorar a história da Igreja →</a>
+        </section>
+
+        <section id="concilios" class="secao">
+            <h2>Concílios da Igreja</h2>
+            <p>Descubra os principais concílios, suas decisões doutrinárias e sua importância para a tradição cristã.</p>
+            <a href="concilios.html">Conhecer os concílios →</a>
+        </section>
+
+        <section id="estudos" class="secao">
+            <h2>Estudos Bíblicos</h2>
+            <p>Aprofunde-se nas Escrituras, em seus livros, contextos históricos e ensinamentos.</p>
+            <a href="estudos-biblicos.html">Explorar estudos bíblicos →</a>
+        </section>
+
+        <section id="contato" class="secao">
+            <h2>Contato</h2>
+            <p>Entre em contato para compartilhar dúvidas, sugestões e contribuições.</p>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 — Teologia | Estudo e conhecimento da fé cristã.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const carrossel = document.getElementById("carrossel");
+            const botaoAnterior = document.getElementById("anterior");
+            const botaoProximo = document.getElementById("proximo");
+
+            if (!carrossel || !botaoAnterior || !botaoProximo) {
+                return;
+            }
+
+            function calcularDistancia() {
+                const card = carrossel.querySelector(".card-teologia");
+                if (!card) {
+                    return 250;
+                }
+                const estilo = window.getComputedStyle(carrossel);
+                const gap = parseFloat(estilo.gap) || 22; // Substituído columnGap por gap
+                return card.getBoundingClientRect().width + gap;
+            }
+
+            botaoProximo.addEventListener("click", function () {
+                carrossel.scrollBy({
+                    left: calcularDistancia(),
+                    behavior: "smooth"
+                });
+            });
+
+            botaoAnterior.addEventListener("click", function () {
+                carrossel.scrollBy({
+                    left: -calcularDistancia(),
+                    behavior: "smooth"
+                });
+            });
+        });
+    </script>
+</body>
+</html>
 
     <section id="historia-da-igreja">
       <h2>História da igreja</h2>
