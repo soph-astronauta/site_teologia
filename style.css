@@ -10,7 +10,7 @@ body {
   padding: 0;
   
   /* Defina aqui a cor desejada (exemplo: um azul bem escuro) */
-  background-color: #315e8ebd !important; 
+  background-color: #6687aabd !important; 
   
   color: #315e8ebd; /* Deixa o texto geral claro para aparecer no fundo escuro */
   scroll-behavior: smooth;
@@ -623,11 +623,12 @@ section {
   margin: 0 auto;
 }
 
+/* titulo historia da igreja*/
 .secao-historia h2 {
   font-family: 'Marcellus', 'Georgia', serif;
   font-size: 2.5rem;
   text-align: center;
-  color: #ffffff; /* Ajuste para #0b0f19 se o seu fundo for claro */
+  color: #161515; /* Ajuste para #0b0f19 se o seu fundo for claro */
   margin-top: 0;
   margin-bottom: 10px;
 }
@@ -656,7 +657,7 @@ section {
   left: 6px; /* Alinha a linha perfeitamente aos pontos */
   height: 100%;
   width: 3px;
-  background-color: #f1c40f; /* Dourado */
+  background-color: #0e0d0d; /* Dourado */
   border-radius: 2px;
 }
 
@@ -679,7 +680,7 @@ section {
   height: 15px;
   border-radius: 50%;
   background-color: #0b0f19;
-  border: 3px solid #f1c40f;
+  border: 3px solid #b30404;
   box-shadow: 0 0 0 4px rgba(241, 196, 15, 0.2);
   z-index: 2;
 }
@@ -693,7 +694,7 @@ section {
 
 /* O CARTÃO DE CONTEÚDO DE CADA ÉPOCA */
 .timeline-conteudo {
-  background-color: #ffffff;
+  background-color: #142b4abc;
   padding: 25px 30px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -705,7 +706,7 @@ section {
 .timeline-card-link:hover .timeline-conteudo {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-color: #f1c40f; /* Borda fica dourada ao passar o mouse */
+  border-color: #b30404; /* Borda fica dourada ao passar o mouse */
 }
 
 .timeline-data {
@@ -742,7 +743,7 @@ section {
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #c29b38;
+  color: #b30404;
   transition: color 0.2s ease;
 }
 
@@ -767,13 +768,13 @@ section {
 
 /* CORES DOS TEXTOS E LISTAS SOBRE A IMAGEM */
 .timeline-conteudo.card-com-imagem h3 {
-  color: #ffffff !important;
+  color: #fffcfc !important;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 .timeline-conteudo.card-com-imagem p,
 .timeline-conteudo.card-com-imagem ul {
-  color: #f1f5f9 !important;
+  color: #f5f7f8 !important;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
 }
 
@@ -835,4 +836,19 @@ section {
   font-size: 0.95rem;
   color: #555555;
   margin-bottom: 15px;
+}
+
+/*concilios*/
+/* ESTILO DO TÍTULO QUANDO FICA FORA DO CARD */
+.titulo-fora-card {
+  font-family: 'Marcellus', 'Georgia', serif;
+  font-size: 1.4rem;
+  color: #0b0f19; /* Se o seu fundo for claro. Se for escuro, mude para #ffffff */
+  margin: 0 0 10px 0; /* Dá um pequeno espaço entre o título e a caixa do card abaixo */
+  transition: color 0.2s ease;
+}
+
+/* Faz o título mudar de cor junto com o card quando o usuário passa o mouse */
+.timeline-card-link:hover .titulo-fora-card {
+  color: #c29b38; /* Tom dourado ao passar o mouse no link */
 }
