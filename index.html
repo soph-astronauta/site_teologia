@@ -1,264 +1,686 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site de Teologia</title>
-  <link rel="stylesheet" href="style.css">
+
+  <title>Teologia | Estudo da Fé Católica</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --fundo: #080b12;
+      --fundo-secundario: #101725;
+      --azul: #142b4a;
+      --azul-claro: #24466e;
+      --vermelho: #8f2635;
+      --texto: #f2f2f2;
+      --texto-secundario: #b9c0cc;
+      --borda: rgba(255,255,255,0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--fundo);
+      color: var(--texto);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* MENU PRINCIPAL */
+
+    .menu {
+      width: 100%;
+      min-height: 76px;
+      padding: 15px 7%;
+      background: rgba(8, 11, 18, 0.97);
+      border-bottom: 1px solid var(--borda);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: white;
+    }
+
+    .logo span {
+      color: #a93646;
+    }
+
+    .menu ul {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      list-style: none;
+    }
+
+    .menu ul a {
+      color: var(--texto-secundario);
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .menu ul a:hover {
+      color: #d34b5c;
+    }
+
+    /* BANNER COM GÊNESIS 1:1 */
+
+    .banner {
+      height: 600px;
+      min-height: 450px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .banner video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        rgba(4, 7, 13, 0.48),
+        rgba(4, 7, 13, 0.88)
+      );
+    }
+
+    .banner-conteudo {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 30px;
+    }
+
+    .banner-conteudo h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(30px, 5vw, 55px);
+      line-height: 1.35;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .referencia {
+      color: #d45a68;
+      font-size: 18px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ESTILO GERAL DAS SEÇÕES */
+
+    .secao {
+      padding: 85px 8%;
+    }
+
+    .titulo-secao {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(25px, 3vw, 36px);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .linha-decorativa {
+      width: 65px;
+      height: 3px;
+      background: var(--vermelho);
+      margin: 0 auto 35px;
+    }
+
+    .descricao-secao {
+      max-width: 850px;
+      margin: 0 auto 40px;
+      text-align: center;
+      color: var(--texto-secundario);
+    }
+
+    /* INTRODUÇÃO */
+
+    .secao-introducao {
+      background: var(--fundo-secundario);
+    }
+
+    .texto-introducao {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      color: var(--texto-secundario);
+    }
+
+    /* CARROSSEL */
+
+    .carrossel-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 45px auto 0;
+    }
+
+    .carrossel {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      padding: 10px 3px 20px;
+    }
+
+    .carrossel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      flex: 0 0 250px;
+      background: #151e2c;
+      border: 1px solid var(--borda);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: var(--vermelho);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-conteudo {
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--texto-secundario);
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .card a {
+      color: #d45a68;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .carrossel-controles {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .carrossel-controles button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--vermelho);
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .carrossel-controles button:hover {
+      background: var(--vermelho);
+    }
+
+    /* HISTÓRIA DA IGREJA */
+
+    .secao-historia {
+      background: var(--fundo);
+    }
+
+    .linha-do-tempo {
+      max-width: 1000px;
+      margin: 45px auto 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .periodo {
+      padding: 25px;
+      background: var(--fundo-secundario);
+      border: 1px solid var(--borda);
+      border-left: 4px solid var(--vermelho);
+      border-radius: 7px;
+      transition: 0.3s;
+    }
+
+    .periodo:hover {
+      transform: translateY(-4px);
+      border-color: var(--vermelho);
+    }
+
+    .periodo h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .periodo .data {
+      color: #d45a68;
+      font-size: 13px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .periodo p {
+      color: var(--texto-secundario);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .periodo a {
+      color: #d45a68;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* CONCÍLIOS */
+
+    .secao-concilios {
+      background: var(--fundo-secundario);
+    }
+
+    .concilio-card {
+      max-width: 850px;
+      margin: auto;
+      padding: 35px;
+      text-align: center;
+      background: #151e2c;
+      border: 1px solid var(--borda);
+      border-radius: 10px;
+    }
+
+    .concilio-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+
+    .concilio-card p {
+      color: var(--texto-secundario);
+      margin-bottom: 22px;
+    }
+
+    .botao {
+      display: inline-block;
+      padding: 11px 24px;
+      background: var(--vermelho);
+      color: white;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .botao:hover {
+      background: #b23849;
+    }
+
+    /* ESTUDOS BÍBLICOS */
+
+    .secao-estudos {
+      background: var(--fundo);
+    }
+
+    .estudos-conteudo {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      color: var(--texto-secundario);
+    }
+
+    /* CONTATO */
+
+    .secao-contato {
+      background: var(--fundo-secundario);
+      text-align: center;
+    }
+
+    .secao-contato p {
+      color: var(--texto-secundario);
+      margin-bottom: 20px;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+      padding: 28px 8%;
+      background: #05070c;
+      border-top: 1px solid var(--borda);
+      text-align: center;
+      color: #929baa;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVIDADE */
+
+    @media (max-width: 800px) {
+      .menu {
+        flex-direction: column;
+        padding: 15px 5%;
+      }
+
+      .menu ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+      }
+
+      .banner {
+        height: 480px;
+      }
+
+      .linha-do-tempo {
+        grid-template-columns: 1fr;
+      }
+
+      .secao {
+        padding: 65px 6%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .menu ul a {
+        font-size: 12px;
+      }
+
+      .banner {
+        height: 400px;
+      }
+
+      .banner-conteudo {
+        padding: 20px;
+      }
+
+      .card {
+        flex-basis: 220px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- MENU ÂNCORA -->
-  <body>
+  <!-- MENU PRINCIPAL -->
+  <nav class="menu">
+    <a href="#inicio" class="logo">TEO<span>LOGIA</span></a>
 
-  <!-- MENU ÂNCORA (Fixo no topo) -->
-  <nav class="menu-ancora">
     <ul>
       <li><a href="#introducao">Introdução</a></li>
-      <li><a href="#teologia-sistematica">História da Igreja</a></li>
-      <li><a href="#concílios">Concílios</a></li>
+      <li><a href="#historia-da-igreja">História da Igreja</a></li>
+      <li><a href="#concilios">Concílios</a></li>
       <li><a href="#estudos-biblicos">Estudos Bíblicos</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
   </nav>
 
-  <!-- BANNER (Começa logo abaixo, com o vídeo rodando e o menu flutuando por cima) -->
-  <header class="banner-versiculo">
-    <video autoplay loop muted playsinline class="video-bg">
+  <!-- BANNER COM VÍDEO E GÊNESIS 1:1 -->
+  <header class="banner" id="inicio">
+    <video autoplay loop muted playsinline>
       <source src="videos/10915129-hd_3840_2160_30fps.mp4" type="video/mp4">
       Seu navegador não suporta vídeos em HTML5.
     </video>
 
-    <div class="banner-overlay">
-      <div class="banner-conteudo">
-        <h1>"No princípio, criou Deus os céus e a terra."</h1>
-        <span class="referencia">Gênesis 1:1</span>
-      </div>
+    <div class="banner-overlay"></div>
+
+    <div class="banner-conteudo">
+      <h1>“No princípio, criou Deus os céus e a terra.”</h1>
+      <span class="referencia">Gênesis 1:1</span>
     </div>
   </header>
 
-  <!-- SEÇÕES SEGUINTES... -->
-</header>
-<!-- CONTEÚDO DAS SEÇÕES... -->
-
-  <!-- CONTEÚDO DAS SEÇÕES -->
   <main>
-    <section id="introducao">
-      <h2>Introdução à Teologia</h2>
-      <p>Bem-vindo ao nosso portal dedicado ao estudo da Teologia e das Escrituras...</p>
-    </section>
 
-    <section id="História da igreja">
-      <h2>História da igreja</h2>
-      <!-- SEÇÃO DE HISTÓRIA DA IGREJA -->
-<section id="historia-da-igreja" class="secao-historia">
-  <div class="historia-container">
-    <h2>História da Igreja</h2>
-    <p class="subtitulo-historia">Uma jornada através dos séculos: das origens apostólicas aos dias atuais.</p>
+    <!-- INTRODUÇÃO -->
+    <section id="introducao" class="secao secao-introducao">
+      <h2 class="titulo-secao">Introdução à Teologia</h2>
+      <div class="linha-decorativa"></div>
 
-    <!-- LINHA DO TEMPO -->
-    <!-- LINHA DO TEMPO COM CARDS CLICÁVEIS -->
-<div class="linha-do-tempo">
-      
-  <!-- LINHA DO TEMPO COM TODOS OS CARDS CLICÁVEIS -->
-<div class="linha-do-tempo">
-      
-  <!-- MARCO 1: IGREJA PRIMITIVA -->
-  <div class="timeline-item">
-    <div class="timeline-ponto"></div>
-    <a href="igreja-primitiva.html" class="timeline-card-link">
-      <div class="timeline-conteudo">
+      <p class="texto-introducao">
+        A Teologia é o estudo de Deus, da fé e das verdades reveladas nas
+        Escrituras. Este espaço foi desenvolvido para apresentar conteúdos
+        sobre a história da Igreja, as doutrinas cristãs, os concílios e os
+        estudos bíblicos, contribuindo para o aprofundamento do conhecimento
+        teológico.
+      </p>
 
-        <h1>Igreja Apostólica (c. 30–100 d.C.)</h1>
-        <h3> Marco: Pentecostes e início da expansão da Igreja. Igreja Apostólica</h3>
-        
-        <p>
-            <ul>
-                <li>Ministério de Jesus Cristo.</li>
-                <li>Pentecostes e descida do Espírito Santo.</li>
-                <li>Pregação dos apóstolos.</li>
-                <li>Conversão de Paulo.</li>
-                <li>Formação das primeiras comunidades cristãs</li>
-            </ul>
-        </p>
-        <span class="leia-mais">Ler conteúdo completo &rarr;</span>
-      </div>
-    </a>
-  </div>
+      <!-- CARROSSEL DE CONTEÚDOS -->
+      <div class="carrossel-container">
+        <div class="carrossel" id="carrossel">
 
-  <!-- MARCO 2: ERA PATRÍSTICA -->
-  <div class="timeline-item">
-    <div class="timeline-ponto"></div>
-    <a href="era-patristica.html" class="timeline-card-link">
-      <div class="timeline-conteudo">
-       
-        <h1>Igreja Primitiva (c. 100–313)</h1>
-        <h3>Marco: Perseguições do Império Romano.</h3>
-        <p>
-            <ul>
-                <li>Expansão do cristianismo pelo Império Romano.</li>
-                <li>Atuação dos primeiros Padres da Igreja.</li>
-                <li>Desenvolvimento da organização eclesiástica.</li>
-                <li>Perseguições contra os cristãos.</li>
-                <li>Formação e defesa das primeiras formulações da fé cristã.</li>
-            </ul>
-        </p>
-        <span class="leia-mais">Ler conteúdo completo &rarr;</span>
-      </div>
-    </a>
-  </div>
+          <article class="card">
+            <img src="img/santissima-trindade.jpg" alt="Representação da Santíssima Trindade">
+            <div class="card-conteudo">
+              <h3>Santíssima Trindade</h3>
+              <p>Conheça a doutrina cristã de um só Deus em três Pessoas: Pai, Filho e Espírito Santo.</p>
+              <a href="santissima-trindade.html">Saiba mais</a>
+            </div>
+          </article>
 
-  <!-- MARCO 3: IDADE MÉDIA -->
-  <div class="timeline-item">
-    <div class="timeline-ponto"></div>
-    <a href="idade-media.html" class="timeline-card-link">
-      <div class="timeline-conteudo">
-       
-        <h1>3. Igreja Imperial e os Grandes Concílios (313–600)</h1>
-        <h3>Marco: Edito de Milão (313).</h3>
-        <p><ul>
-                <li>Legalização e tolerância ao cristianismo no Império Romano.</li>
-                <li>Concílio de Niceia (325).</li>
-                <li>Desenvolvimento das formulações doutrinárias sobre a Trindade e Cristo.</li>
-                <li>Cristianismo torna-se religião oficial do Império Romano (380–381).</li>
-                <li>Fortalecimento do monasticismo.</li>
-            </ul></p>
-        <span class="leia-mais">Ler conteúdo completo &rarr;</span>
-      </div>
-    </a>
-  </div>
+          <article class="card">
+            <img src="img/cristologia.jpg" alt="Representação de Jesus Cristo">
+            <div class="card-conteudo">
+              <h3>Cristologia</h3>
+              <p>Estude a pessoa, a natureza e a missão de Jesus Cristo.</p>
+              <a href="cristologia.html">Saiba mais</a>
+            </div>
+          </article>
 
-  <!-- MARCO 4: REFORMA PROTESTANTE -->
-  <div class="timeline-item">
-    <div class="timeline-ponto"></div>
-    <a href="reforma-protestante.html" class="timeline-card-link">
-      <div class="timeline-conteudo">
-       
-        <h1>Igreja na Alta Idade Média (600–1054)</h1>
-        <h3>Marco: Expansão do cristianismo pela Europa medieval.</h3>
-       <p><ul>
-                <li>Fortalecimento do papado no Ocidente.</li>
-                <li>Evangelização de povos germânicos e eslavos.</li>
-                <li>Crescimento dos mosteiros e ordens monásticas.</li>
-                <li>Coroação de Carlos Magno (800).</li>
-                <li>Distanciamento progressivo entre as tradições cristãs do Oriente e do Ocidente.</li>
-            </ul></p>
-        <span class="leia-mais">Ler conteúdo completo &rarr;</span>
-      </div>
-    </a>
-  </div>
+          <article class="card">
+            <img src="img/historia-santos.jpg" alt="Representação de santos da Igreja">
+            <div class="card-conteudo">
+              <h3>História dos Santos</h3>
+              <p>Conheça testemunhos de fé e a história de importantes santos cristãos.</p>
+              <a href="historia-dos-santos.html">Saiba mais</a>
+            </div>
+          </article>
 
-  <!-- MARCO 5: GRANDES DESPERTARES E MISSÕES -->
-  <div class="timeline-item">
-    <div class="timeline-ponto"></div>
-    <a href="grandes-despertares.html" class="timeline-card-link">
-      <div class="timeline-conteudo"> 
-        <h1>Igreja na Baixa Idade Média (1054–1517)</h1>
-        <h3>Marco: Cisma entre Oriente e Ocidente (1054).</h3>
-       <p><ul>
-                <li>Consolidação da separação entre Igreja Católica do Ocidente e Igreja Ortodoxa do Oriente.</li>
-                <li>Cruzadas.</li>
-                <li>Desenvolvimento das universidades medievais.</li>
-                <li>Surgimento e expansão de ordens religiosas, como franciscanos e dominicanos.</li>
-                <li>Crises institucionais e movimentos de reforma religiosa.</li>
-            </ul></p>
-        <span class="leia-mais">Ler conteúdo completo &rarr;</span>
-      </div>
-    </a>
-  </div>
+          <article class="card">
+            <img src="img/devocoes-marianas.jpg" alt="Representação de Maria">
+            <div class="card-conteudo">
+              <h3>Devoções Marianas</h3>
+              <p>Explore a tradição da Igreja e as diferentes expressões da devoção mariana.</p>
+              <a href="devocoes-marianas.html">Saiba mais</a>
+            </div>
+          </article>
 
-  <!-- MARCO 6: IGREJA CONTEMPORÂNEA -->
-  <div class="timeline-item">
-    <div class="timeline-ponto"></div>
-    <a href="igreja-contemporanea.html" class="timeline-card-link">
-      <div class="timeline-conteudo">
-        <h1>Reforma e Contrarreforma (1517–1789)</h1>
-        <h3>Marco: Reforma Protestante (1517).</h3>
-       <p><ul>
-                <li>Publicação das 95 teses de Martinho Lutero.</li>
-                <li>Surgimento e expansão de diferentes tradições protestantes.</li>
-                <li>Reforma Católica e Concílio de Trento (1545–1563).</li>
-                <li>Expansão missionária cristã para outros continentes.</li>
-                <li>Crises institucionais e movimentos de reforma religiosa.</li>
-                <li>Movimentos de avivamento religioso.</li>
-            </ul></p>
-        <span class="leia-mais">Ler conteúdo completo &rarr;</span>
-      </div>
+          <article class="card">
+            <img src="img/livros-deuterocanonicos.jpg" alt="Bíblia aberta">
+            <div class="card-conteudo">
+              <h3>Livros Deuterocanônicos</h3>
+              <p>Conheça os livros presentes no cânon bíblico católico.</p>
+              <a href="livros-deuterocanonicos.html">Saiba mais</a>
+            </div>
+          </article>
 
-<!-- MARCO 7: IGREJA CONTEMPORÂNEA -->
- <div class="timeline-item">
-  <div class="timeline-ponto"></div>
-  <a href="seu-novo-artigo.html" class="timeline-card-link">
-    <div class="timeline-conteudo">
-      <h3>Igreja Moderna e Contemporânea (1789–atualidade)</h3>
-      <p class="marco-subtitulo">Marco: Transformações religiosas, sociais e culturais da modernidade.</p>
-
-      <ul>
-        <li>Expansão mundial das comunidades cristãs.</li>
-        <li>Movimentos missionários e evangélicos.</li>
-        <li>Crescimento do pentecostalismo no século XX.</li>
-        <li>Concílio Vaticano II (1962–1965).</li>
-        <li>Diálogo ecumênico e inter-religioso.</li>
-        <li>Desafios da Igreja diante da sociedade contemporânea.</li>
-      </ul>
-
-      <span class="leia-mais">Ler conteúdo completo &rarr;</span>
-    </div>
-  </a>
-</div>
-
-    </a>
-  </div>
-
-</div>
-    </div>
-  </div>
-</section>
-    </section>
-
-
-    </section>
-
-    <!--CONCILIOS -->
-<section id="concilios" class="secao-historia">
-  <div class="historia-container">
-    <h2>Concílios</h2>
-    <div class="timeline-item">
-      <div class="timeline-ponto"></div>
-      
-      <!-- CAMINHO CORRIGIDO PARA A PÁGINA DOS CONCÍLIOS -->
-      <a href="concilios.html" class="timeline-card-link">
-        
-        <div class="timeline-conteudo">
-          <h3>Concílios Ecumênicos da Igreja</h3>
-          <p class="marco-subtitulo">Marco: As grandes assembleias que definiram a ortodoxia cristã e os dogmas da fé.</p>
-
-          <ul>
-            <li>Concílio de Niceia (325 d.C.) e a divindade de Cristo.</li>
-            <li>Concílio de Constantinopla (381 d.C.) e o Espírito Santo.</li>
-            <li>Concílio de Éfeso (431 d.C.) e a pessoa de Cristo.</li>
-            <li>Concílio de Calcedônia (451 d.C.) e as duas naturezas.</li>
-            <li>A importância histórica e teológica dessas decisões para a Igreja.</li>
-          </ul>
-
-          <span class="leia-mais">Ler conteúdo completo &rarr;</span>
         </div>
-      </a>
-    </div>
-  </div>
-</section>
-   
 
-    <section id="estudos-biblicos">
-      <h2>Estudos Bíblicos</h2>
-      <p>Análises exegéticas, comentários de textos bíblicos e hermenêutica...</p>
+        <div class="carrossel-controles">
+          <button type="button" id="anterior" aria-label="Conteúdos anteriores">‹</button>
+          <button type="button" id="proximo" aria-label="Próximos conteúdos">›</button>
+        </div>
+      </div>
     </section>
 
-    <section id="contato">
-      <h2>Contato</h2>
-      <p>Entre em contato conosco para dúvidas, sugestões ou envio de artigos...</p>
+    <!-- HISTÓRIA DA IGREJA -->
+    <section id="historia-da-igreja" class="secao secao-historia">
+      <h2 class="titulo-secao">História da Igreja</h2>
+      <div class="linha-decorativa"></div>
+
+      <p class="descricao-secao">
+        Conheça os principais períodos da história do cristianismo, desde a
+        comunidade apostólica até a Igreja na contemporaneidade.
+      </p>
+
+      <div class="linha-do-tempo">
+
+        <article class="periodo">
+          <h3>Igreja Apostólica</h3>
+          <span class="data">c. 30–100 d.C.</span>
+          <p>O nascimento da Igreja, a missão dos apóstolos e a expansão inicial do cristianismo.</p>
+          <a href="igreja-apostolica.html">Explorar período</a>
+        </article>
+
+        <article class="periodo">
+          <h3>Igreja Primitiva</h3>
+          <span class="data">c. 100–313 d.C.</span>
+          <p>As primeiras comunidades cristãs, as perseguições e o desenvolvimento da fé.</p>
+          <a href="igreja-primitiva.html">Explorar período</a>
+        </article>
+
+        <article class="periodo">
+          <h3>Igreja Imperial</h3>
+          <span class="data">313–600 d.C.</span>
+          <p>A liberdade religiosa, os grandes concílios e a consolidação de importantes doutrinas.</p>
+          <a href="igreja-imperial.html">Explorar período</a>
+        </article>
+
+        <article class="periodo">
+          <h3>Idade Média</h3>
+          <span class="data">c. 600–1000 d.C.</span>
+          <p>A expansão do cristianismo, o monaquismo e a formação da sociedade medieval.</p>
+          <a href="idade-media.html">Explorar período</a>
+        </article>
+
+        <article class="periodo">
+          <h3>Baixa Idade Média</h3>
+          <span class="data">c. 1000–1500 d.C.</span>
+          <p>O desenvolvimento das universidades, das ordens religiosas e da teologia escolástica.</p>
+          <a href="baixa-idade-media.html">Explorar período</a>
+        </article>
+
+        <article class="periodo">
+          <h3>Reforma e Contrarreforma</h3>
+          <span class="data">A partir de 1517</span>
+          <p>As transformações religiosas da Europa e a resposta católica, especialmente com o Concílio de Trento.</p>
+        </article>
+
+        <article class="periodo">
+          <h3>Igreja Moderna e Contemporânea</h3>
+          <span class="data">Séculos XVIII–XXI</span>
+          <p>Os desafios da modernidade, o Concílio Vaticano II e a presença da Igreja no mundo atual.</p>
+        </article>
+
+      </div>
     </section>
+
+    <!-- CONCÍLIOS -->
+    <section id="concilios" class="secao secao-concilios">
+      <h2 class="titulo-secao">Concílios da Igreja</h2>
+      <div class="linha-decorativa"></div>
+
+      <div class="concilio-card">
+        <h3>Os grandes concílios ecumênicos</h3>
+        <p>
+          Os concílios tiveram papel fundamental na história da Igreja,
+          contribuindo para a definição de doutrinas, a resolução de
+          controvérsias teológicas e a orientação da vida cristã.
+        </p>
+        <a href="concilios.html" class="botao">Conheça os concílios</a>
+      </div>
+    </section>
+
+    <!-- ESTUDOS BÍBLICOS -->
+    <section id="estudos-biblicos" class="secao secao-estudos">
+      <h2 class="titulo-secao">Estudos Bíblicos</h2>
+      <div class="linha-decorativa"></div>
+
+      <div class="estudos-conteudo">
+        <p>
+          Aprofunde-se nas Sagradas Escrituras por meio do estudo dos livros
+          bíblicos, de seus contextos históricos, de seus ensinamentos e de
+          sua interpretação dentro da tradição cristã.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="secao secao-contato">
+      <h2 class="titulo-secao">Contato</h2>
+      <div class="linha-decorativa"></div>
+
+      <p>
+        Entre em contato para enviar dúvidas, sugestões ou compartilhar
+        contribuições para o estudo teológico.
+      </p>
+      <a href="mailto:contato@exemplo.com" class="botao">Enviar mensagem</a>
+    </section>
+
   </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p>© 2026 Teologia. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- FUNCIONAMENTO DO CARROSSEL -->
+  <script>
+    const carrossel = document.getElementById("carrossel");
+    const anterior = document.getElementById("anterior");
+    const proximo = document.getElementById("proximo");
+
+    proximo.addEventListener("click", () => {
+      carrossel.scrollBy({
+        left: 275,
+        behavior: "smooth"
+      });
+    });
+
+    anterior.addEventListener("click", () => {
+      carrossel.scrollBy({
+        left: -275,
+        behavior: "smooth"
+      });
+    });
+  </script>
 
 </body>
 </html>
