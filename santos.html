@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>História dos Santos | Teologia</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080d17;
+            color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        /* MENU */
+
+        header {
+            width: 100%;
+            padding: 22px 7%;
+            background: #080d17;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #a52a3a;
+        }
+
+        .menu {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: #d4d4d4;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #c04452;
+        }
+
+        /* TÍTULO */
+
+        .titulo-pagina {
+            text-align: center;
+            padding: 75px 20px 35px;
+        }
+
+        .titulo-pagina h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(32px, 5vw, 48px);
+            color: #ffffff;
+            margin-bottom: 18px;
+        }
+
+        .titulo-pagina h1 span {
+            color: #b83243;
+        }
+
+        .titulo-pagina p {
+            color: #b8bdc8;
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .linha-decorativa {
+            width: 75px;
+            height: 3px;
+            background: #a52a3a;
+            margin: 25px auto 0;
+        }
+
+        /* GALERIA */
+
+        .galeria {
+            width: 86%;
+            max-width: 1400px;
+            margin: 45px auto 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 35px;
+        }
+
+        .santo {
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            display: block;
+            transition: transform 0.35s ease;
+        }
+
+        .santo:hover {
+            transform: translateY(-9px);
+        }
+
+        .imagem-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #111a2a;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .santo:hover img {
+            transform: scale(1.07);
+            filter: brightness(1.12);
+        }
+
+        .santo h2 {
+            margin-top: 18px;
+            font-family: Georgia, serif;
+            font-size: 21px;
+            font-weight: normal;
+            color: #e8e8e8;
+            transition: color 0.3s;
+        }
+
+        .santo:hover h2 {
+            color: #c04452;
+        }
+
+        .santo::after {
+            content: "Conhecer história";
+            display: block;
+            color: #aab0bc;
+            font-size: 12px;
+            margin-top: 9px;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .santo:hover::after {
+            opacity: 1;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            background: #050912;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #858b98;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 650px) {
+            header {
+                justify-content: center;
+            }
+
+            .menu {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .galeria {
+                width: 90%;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 25px 15px;
+            }
+
+            .santo h2 {
+                font-size: 17px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <header>
+        <a href="index.html" class="logo">TEO<span>LOGIA</span></a>
+
+        <nav class="menu">
+            <a href="index.html">Início</a>
+            <a href="index.html#historia-da-igreja">História da Igreja</a>
+            <a href="index.html#concilios">Concílios</a>
+            <a href="index.html#estudos-biblicos">Estudos Bíblicos</a>
+        </nav>
+    </header>
+
+    <!-- TÍTULO -->
+    <section class="titulo-pagina">
+        <h1>História dos <span>Santos</span></h1>
+
+        <p>
+            Conheça a vida, a fé e o testemunho daqueles que dedicaram
+            suas vidas a Cristo e marcaram a história da Igreja.
+        </p>
+
+        <div class="linha-decorativa"></div>
+    </section>
+
+    <!-- GALERIA DE SANTOS -->
+    <main class="galeria">
+
+        <a href="santos/sao-bento.html" class="santo">
+            <div class="imagem-container">
+                <img src="img/santos/sao-bento.jpg"
+                     alt="Representação de São Bento">
+            </div>
+            <h2>São Bento</h2>
+        </a>
+
+        <a href="santos/sao-francisco.html" class="santo">
+            <div class="imagem-container">
+                <img src="img/santos/sao-francisco.jpg"
+                     alt="Representação de São Francisco de Assis">
+            </div>
+            <h2>São Francisco de Assis</h2>
+        </a>
+
+        <a href="santos/santo-agostinho.html" class="santo">
+            <div class="imagem-container">
+                <img src="img/santos/santo-agostinho.jpg"
+                     alt="Representação de Santo Agostinho">
+            </div>
+            <h2>Santo Agostinho</h2>
+        </a>
+
+        <a href="santos/sao-tomas-de-aquino.html" class="santo">
+            <div class="imagem-container">
+                <img src="img/santos/sao-tomas-de-aquino.jpg"
+                     alt="Representação de São Tomás de Aquino">
+            </div>
+            <h2>São Tomás de Aquino</h2>
+        </a>
+
+        <a href="santos/santa-teresinha.html" class="santo">
+            <div class="imagem-container">
+                <img src="img/santos/santa-teresinha.jpg"
+                     alt="Representação de Santa Teresinha">
+            </div>
+            <h2>Santa Teresinha</h2>
+        </a>
+
+        <a href="santos/sao-joao-paulo-ii.html" class="santo">
+            <div class="imagem-container">
+                <img src="img/santos/sao-joao-paulo-ii.jpg"
+                     alt="Representação de São João Paulo II">
+            </div>
+            <h2>São João Paulo II</h2>
+        </a>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 Teologia — História, fé e conhecimento.</p>
+    </footer>
+
+</body>
+</html>
